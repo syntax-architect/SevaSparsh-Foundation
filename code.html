@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>SevaSparsh Foundation | Dedicated Care &amp; Mobility for Elders</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: "#0f294a",
+              "navy-dark": "#08182d",
+              "navy-light": "#1e3a61",
+              amber: "#c85a17",
+              "amber-hover": "#b24d10",
+              emerald: "#0d6e5a",
+              "emerald-light": "#e6f4f1",
+              stone: "#f8fafc",
+              border: "#e2e8f0"
+            }
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ["Plus Jakarta Sans", "Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        background-color: #f8fafc;
+        color: #0f172a;
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        overscroll-behavior: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+      .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans text-sm md:text-base flex flex-col min-h-screen">
+<!-- INSTITUTIONAL CREDIBLE HEADER -->
+<header class="sticky top-0 w-full z-40 bg-white border-b border-slate-200 shadow-sm pt-safe">
+<!-- Top Statutory Bar -->
+<div class="bg-brand-navy-dark text-slate-200 text-[11px] px-4 py-1.5 flex items-center justify-between border-b border-slate-800">
+<div class="flex items-center gap-2 truncate">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+<span class="font-medium tracking-wide">Section 8 Reg. Non-Profit | DARPAN ID: DL/2021/0289410</span>
+</div>
+<span class="text-emerald-300 font-medium whitespace-nowrap pl-2">80G 50% Tax Exemption Valid</span>
+</div>
+<!-- Main Navigation Bar -->
+<div class="h-16 px-4 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<!-- Official Logo Mark -->
+<img src="logo.jpg" alt="Kinship & Care Logo" class="w-10 h-10 rounded-md shadow-sm border border-slate-200 object-cover" />
+<div class="flex flex-col">
+<span class="font-display font-bold text-base text-brand-navy leading-tight">SevaSparsh Foundation</span>
+<span class="text-[11px] text-slate-500 font-medium">National Elder Care &amp; Mobility Mission</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="hidden xs:inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 text-[11px] font-semibold px-2.5 py-1 rounded border border-emerald-200">
+<span class="material-symbols-outlined text-[13px] text-emerald-700">verified</span>
+          Verified 80G / 12A
+        </span>
+<button class="bg-brand-amber hover:bg-brand-amber-hover text-white text-xs font-semibold px-3.5 py-2 rounded-md transition-colors shadow-sm" onclick="scrollToDonationModule()">
+          Donate
+        </button>
+</div>
+</div>
+</header>
+<!-- MAIN EDITORIAL & ACTION CONTAINER -->
+<main class="flex-1 w-full max-w-4xl mx-auto px-4 py-4 pb-24 space-y-6"><div class="bg-emerald-50 border border-emerald-200 rounded-md px-3.5 py-2 flex items-center justify-between text-xs text-emerald-800 shadow-xs"><div class="flex items-center gap-2 truncate"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span></span><span class="font-medium truncate"><strong class="font-bold text-emerald-900">Aarav M.</strong> donated <span class="font-bold text-emerald-900">₹1,500</span> from Bengaluru <span class="text-slate-500">(4m ago)</span> • <span class="text-emerald-700 font-semibold">80G Tax Exemption Claimed</span></span></div><div class="hidden sm:flex items-center gap-1 text-[11px] text-emerald-700 font-semibold whitespace-nowrap pl-2"><span class="material-symbols-outlined text-[14px]">verified</span>Live Verified Ledger</div></div>
+<!-- HERO EDITORIAL CARD (Dignified, Clean, Natural Presentation) -->
+<section class="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm">
+<!-- Clean Authentic Image Presentation (No faux gradients or cartoonish borders) -->
+<div class="relative w-full aspect-[4/3] sm:aspect-[16/9] max-h-[380px] bg-slate-100 overflow-hidden">
+<img alt="Elderly grandmother and caring social worker at SevaSparsh senior day shelter, New Delhi" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida/AEtjO1XOuSu0WTp9rZN7uoPc8OWAui1f-KCYieImHqrPhodP-1LwGUCMqsNi2-4P125CVBTcwt_QASjRyoCwoUHjqLViAeR_3OluOtJ4nBSRSbik1ZyAI9saauZyYTUtONNM7O9q5rL7Vbg35JVw8vgkwBMOy_cw0e84Y-DlREr547IfaUIMc0Sw4hoiR1_9JqRCPuVxQlOINOc1lOIHLH7qlMcRmBn4SoAAhfWa9NLCQ6sekIb5DVZrBGkHPma5"/>
+<div class="absolute bottom-2.5 left-3 bg-brand-navy/90 text-white text-[11px] px-2.5 py-1 rounded backdrop-blur-sm flex items-center gap-1.5 font-medium border border-slate-700">
+<span class="material-symbols-outlined text-[14px] text-emerald-400">photo_camera</span>
+          Field Dispatch: Mehrauli Senior Care Centre, New Delhi
+        </div>
+</div>
+<!-- Narrative & Statutory Tax Note -->
+<div class="p-4 sm:p-6 space-y-4">
+<div class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-navy bg-slate-100 px-2.5 py-1 rounded border border-slate-200">
+<span class="material-symbols-outlined text-[15px] text-brand-amber">emergency</span>
+          Verified Field Appeal 2025
+        </div>
+<h1 class="text-xl sm:text-2xl font-display font-bold text-brand-navy leading-snug">
+          Restoring Dignity, Medical Care, and Mobility to India's Abandoned Elders
+        </h1>
+<p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+          Over 14,200 vulnerable senior citizens across peri-urban settlements live without basic mobility aids, chronic illness medications, or daily nutrition. SevaSparsh provides structured doorstep palliative care, certified orthopedic equipment, and daily hygienic meal distribution with 100% field audit transparency.
+        </p>
+<!-- Institutional Tax Exemption Strip -->
+<div class="bg-slate-50 border border-slate-200 rounded-md p-3 flex items-start gap-2.5 text-xs text-slate-700">
+<span class="material-symbols-outlined text-brand-navy text-[18px] shrink-0 mt-0.5">verified_user</span>
+<div>
+<strong class="text-brand-navy font-semibold">Government Certified Tax Deduction:</strong> All contributions made to SevaSparsh Foundation are eligible for 50% tax deduction under Section 80G of the Income Tax Act, 1961. An official digitally signed 80G certificate with unique reference number is issued immediately upon receipt clearance.
+          </div>
+</div>
+</div>
+</section>
+<!-- AUTHENTIC FUNDRAISER AUDITED TRACKER -->
+<section class="bg-white border border-slate-200 rounded-lg p-4 sm:p-5 shadow-sm space-y-4"><div class="relative overflow-hidden rounded-lg"><div class="absolute inset-0 bg-cover bg-center opacity-5 pointer-events-none" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDseqOym5vMkJS_W7sZfTRcIF6PmWqV_ylHhr8n_fu-MvTyFvNqrmR77ZkxTFFI5WCXWd2Wjj5zytvNKJiAhtAVfH7TpVL4GlqAo8-yMUwMGrCd_x5LymZeYZRDUmb3Vh1xe0NWe5f9lOT8BaAZRKBjJuHqxHevJvI7jiQUnwV4-k3p-g-PfwijY6Be6g4QSfzWJj5ubqPI_yCQA3kDmpKjrW8VCpV4WqSMoUKXjHn9RvsfivKSxJ4NBw');"></div><div class="relative z-10 space-y-4"><div class="bg-amber-50/90 border border-brand-amber/30 rounded-md p-2.5 flex items-center justify-between gap-2 text-xs"><div class="flex items-center gap-2 text-brand-amber"><span class="material-symbols-outlined text-[18px] shrink-0">priority_high</span><span class="font-medium text-slate-800"><strong class="text-brand-amber font-bold">Urgent Batch Dispatch:</strong> Only <strong class="text-slate-900 underline font-bold">32 elders</strong> in this verified cohort awaiting mobility walkers before winter frost.</span></div><span class="hidden xs:inline-block bg-brand-amber text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider whitespace-nowrap">Priority #1</span></div><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-100 pb-3"><div><span class="text-xs uppercase tracking-wider font-bold text-brand-navy">Active Campaign</span><h2 class="font-display font-bold text-base text-slate-900">Elderly Winter Healthcare &amp; Mobility Fund 2025</h2></div><div class="flex items-center gap-3 text-xs text-slate-500"><span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px] text-slate-400">group</span><strong class="text-slate-700 font-semibold">1,420</strong> Donors</span><span>•</span><span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px] text-brand-amber">schedule</span><strong class="text-brand-amber font-bold">8 Days</strong> Remaining</span></div></div><div class="space-y-2"><div class="flex justify-between items-baseline"><div><span class="text-2xl sm:text-3xl font-display font-bold text-brand-navy">₹18,40,000</span><span class="text-xs text-slate-500 font-medium pl-1.5">raised of ₹25,00,000 target</span></div><span class="text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">73.6% Disbursed</span></div><div class="w-full bg-slate-100 h-2.5 rounded-sm overflow-hidden border border-slate-200"><div class="bg-brand-navy h-full" style="width: 73.6%"></div></div><div class="grid grid-cols-3 gap-2 pt-2 text-center text-xs"><div class="bg-slate-50/90 p-2 rounded border border-slate-200/80"><span class="block text-[11px] text-slate-500">Medicine Supplies</span><span class="font-bold text-slate-800">₹8.2 Lakhs</span></div><div class="bg-slate-50/90 p-2 rounded border border-slate-200/80"><span class="block text-[11px] text-slate-500">Mobility &amp; Walkers</span><span class="font-bold text-slate-800">₹6.5 Lakhs</span></div><div class="bg-slate-50/90 p-2 rounded border border-slate-200/80"><span class="block text-[11px] text-slate-500">Hot Meals Kit</span><span class="font-bold text-slate-800">₹3.7 Lakhs</span></div></div></div></div></div></section>
+<!-- RIGOROUS IN-PAGE DONATION MODULE (Direct, Institutional & Trust-Rich) -->
+<section class="bg-white border-2 border-brand-navy/30 rounded-lg p-4 sm:p-6 shadow-sm space-y-5" id="donation-module">
+<div class="flex items-center justify-between border-b border-slate-200 pb-3">
+<div>
+<h3 class="font-display font-bold text-lg text-brand-navy">Select Contribution</h3>
+<p class="text-xs text-slate-600">Directly audited support for verified elders</p>
+</div>
+<div class="flex items-center gap-1 text-[11px] text-slate-600 font-medium">
+<span class="material-symbols-outlined text-[14px] text-emerald-700">lock</span>
+          256-Bit SSL Encrypted
+        </div>
+</div>
+<!-- Frequency Segment (Institutional Tab Style) -->
+<div class="grid grid-cols-2 bg-slate-100 p-1 rounded-md border border-slate-200 text-xs font-semibold">
+<button class="py-2 px-3 rounded text-center transition-all bg-white text-brand-navy shadow-sm border border-slate-200" id="tab-once" onclick="selectFrequency('once')" type="button">
+          One-Time Donation
+        </button>
+<button class="py-2 px-3 rounded text-center transition-all text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1" id="tab-monthly" onclick="selectFrequency('monthly')" type="button">
+<span>Support Monthly</span>
+<span class="bg-brand-navy text-white text-[10px] px-1.5 py-0.2 rounded font-bold">Most Impactful</span>
+</button>
+</div>
+<!-- Realistic Tangible Unit Economics Tiers -->
+<div class="space-y-2.5">
+<label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Select Impact Tier</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+<!-- Tier 1: ₹750 -->
+<div class="bg-emerald-50/70 border border-emerald-200 rounded-lg p-3 flex flex-col sm:flex-row items-start sm:items-center gap-3"><div class="w-12 h-12 rounded-md overflow-hidden shrink-0 border border-emerald-300 relative shadow-xs"><img alt="Elderly mobility beneficiary with walker" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDseqOym5vMkJS_W7sZfTRcIF6PmWqV_ylHhr8n_fu-MvTyFvNqrmR77ZkxTFFI5WCXWd2Wjj5zytvNKJiAhtAVfH7TpVL4GlqAo8-yMUwMGrCd_x5LymZeYZRDUmb3Vh1xe0NWe5f9lOT8BaAZRKBjJuHqxHevJvI7jiQUnwV4-k3p-g-PfwijY6Be6g4QSfzWJj5ubqPI_yCQA3kDmpKjrW8VCpV4WqSMoUKXjHn9RvsfivKSxJ4NBw"/></div><div class="flex-1 text-xs text-slate-800"><div class="flex items-center gap-1.5 font-bold text-brand-navy text-[13px]"><span class="material-symbols-outlined text-[16px] text-emerald-700">check_circle</span><span>Direct Psychological &amp; Medical Impact:</span></div><p class="text-slate-700 mt-0.5 leading-snug" id="tier-impact-desc">₹1,500 funds 1 pair of custom quad-walkers + 2 home physiotherapy visits, freeing an elder from bed confinement.</p></div><div class="text-right shrink-0 hidden xs:block"><span class="inline-block bg-white text-emerald-800 text-[10px] font-bold px-2 py-1 rounded border border-emerald-300 shadow-xs">100% Tax Receipt</span></div></div>
+<!-- Tier 2: ₹1,500 (Default) -->
+<button class="tier-card active text-left p-3 rounded border-2 border-brand-navy bg-slate-50 hover:bg-slate-100 transition-all flex flex-col justify-between shadow-xs" data-amount="1500" onclick="setTier(1500, 'Pair of Custom Mobility Walkers + Palliative Nurse Visit')" type="button">
+<div class="flex justify-between items-center w-full">
+<span class="font-display font-bold text-base text-brand-navy">₹1,500</span>
+<span class="text-[10px] bg-brand-navy text-white font-bold px-1.5 py-0.5 rounded">Popular</span>
+</div>
+<p class="text-xs text-slate-700 font-medium mt-1 leading-snug">
+              Pair of Custom Mobility Walkers + Palliative Nurse Visit
+            </p>
+</button>
+<!-- Tier 3: ₹3,500 -->
+<div class="bg-emerald-50/70 border border-emerald-200 rounded-lg p-3 flex flex-col sm:flex-row items-start sm:items-center gap-3"><div class="w-12 h-12 rounded-md overflow-hidden shrink-0 border border-emerald-300 relative shadow-xs"><img alt="Elderly mobility beneficiary with walker" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDseqOym5vMkJS_W7sZfTRcIF6PmWqV_ylHhr8n_fu-MvTyFvNqrmR77ZkxTFFI5WCXWd2Wjj5zytvNKJiAhtAVfH7TpVL4GlqAo8-yMUwMGrCd_x5LymZeYZRDUmb3Vh1xe0NWe5f9lOT8BaAZRKBjJuHqxHevJvI7jiQUnwV4-k3p-g-PfwijY6Be6g4QSfzWJj5ubqPI_yCQA3kDmpKjrW8VCpV4WqSMoUKXjHn9RvsfivKSxJ4NBw"/></div><div class="flex-1 text-xs text-slate-800"><div class="flex items-center gap-1.5 font-bold text-brand-navy text-[13px]"><span class="material-symbols-outlined text-[16px] text-emerald-700">check_circle</span><span>Direct Psychological &amp; Medical Impact:</span></div><p class="text-slate-700 mt-0.5 leading-snug" id="tier-impact-desc">₹1,500 funds 1 pair of custom quad-walkers + 2 home physiotherapy visits, freeing an elder from bed confinement.</p></div><div class="text-right shrink-0 hidden xs:block"><span class="inline-block bg-white text-emerald-800 text-[10px] font-bold px-2 py-1 rounded border border-emerald-300 shadow-xs">100% Tax Receipt</span></div></div>
+<!-- Tier 4: ₹5,000 -->
+<div class="bg-emerald-50/70 border border-emerald-200 rounded-lg p-3 flex flex-col sm:flex-row items-start sm:items-center gap-3"><div class="w-12 h-12 rounded-md overflow-hidden shrink-0 border border-emerald-300 relative shadow-xs"><img alt="Elderly mobility beneficiary with walker" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDseqOym5vMkJS_W7sZfTRcIF6PmWqV_ylHhr8n_fu-MvTyFvNqrmR77ZkxTFFI5WCXWd2Wjj5zytvNKJiAhtAVfH7TpVL4GlqAo8-yMUwMGrCd_x5LymZeYZRDUmb3Vh1xe0NWe5f9lOT8BaAZRKBjJuHqxHevJvI7jiQUnwV4-k3p-g-PfwijY6Be6g4QSfzWJj5ubqPI_yCQA3kDmpKjrW8VCpV4WqSMoUKXjHn9RvsfivKSxJ4NBw"/></div><div class="flex-1 text-xs text-slate-800"><div class="flex items-center gap-1.5 font-bold text-brand-navy text-[13px]"><span class="material-symbols-outlined text-[16px] text-emerald-700">check_circle</span><span>Direct Psychological &amp; Medical Impact:</span></div><p class="text-slate-700 mt-0.5 leading-snug" id="tier-impact-desc">₹1,500 funds 1 pair of custom quad-walkers + 2 home physiotherapy visits, freeing an elder from bed confinement.</p></div><div class="text-right shrink-0 hidden xs:block"><span class="inline-block bg-white text-emerald-800 text-[10px] font-bold px-2 py-1 rounded border border-emerald-300 shadow-xs">100% Tax Receipt</span></div></div>
+</div>
+</div>
+<!-- Active Impact Banner -->
+<div class="bg-emerald-50/70 border border-emerald-200 rounded-lg p-3 flex flex-col sm:flex-row items-start sm:items-center gap-3"><div class="w-12 h-12 rounded-md overflow-hidden shrink-0 border border-emerald-300 relative shadow-xs"><img alt="Elderly mobility beneficiary with walker" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDseqOym5vMkJS_W7sZfTRcIF6PmWqV_ylHhr8n_fu-MvTyFvNqrmR77ZkxTFFI5WCXWd2Wjj5zytvNKJiAhtAVfH7TpVL4GlqAo8-yMUwMGrCd_x5LymZeYZRDUmb3Vh1xe0NWe5f9lOT8BaAZRKBjJuHqxHevJvI7jiQUnwV4-k3p-g-PfwijY6Be6g4QSfzWJj5ubqPI_yCQA3kDmpKjrW8VCpV4WqSMoUKXjHn9RvsfivKSxJ4NBw"/></div><div class="flex-1 text-xs text-slate-800"><div class="flex items-center gap-1.5 font-bold text-brand-navy text-[13px]"><span class="material-symbols-outlined text-[16px] text-emerald-700">check_circle</span><span>Direct Psychological &amp; Medical Impact:</span></div><p class="text-slate-700 mt-0.5 leading-snug" id="tier-impact-desc">₹1,500 funds 1 pair of custom quad-walkers + 2 home physiotherapy visits, freeing an elder from bed confinement.</p></div><div class="text-right shrink-0 hidden xs:block"><span class="inline-block bg-white text-emerald-800 text-[10px] font-bold px-2 py-1 rounded border border-emerald-300 shadow-xs">100% Tax Receipt</span></div></div>
+<!-- Custom Amount Input -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-1.5" for="custom-input">Or Enter Custom Amount (₹ INR)</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 text-slate-500 font-bold text-base">₹</span>
+<input class="w-full pl-8 pr-4 py-2.5 border border-slate-300 rounded-md font-display font-bold text-slate-900 text-base focus:border-brand-navy focus:ring-1 focus:ring-brand-navy" id="custom-input" min="100" oninput="handleCustomAmountChange(this.value)" placeholder="Other amount" step="100" type="number" value="1500"/>
+</div>
+<span class="text-[11px] text-slate-500 mt-1 block">Minimum donation ₹100. Tax receipt eligible for all amounts.</span>
+</div>
+<!-- Donor Quick Form -->
+<form class="space-y-3 pt-2 border-t border-slate-100" id="donation-submit-form" onsubmit="processCheckout(event)">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1" for="donor-name">Full Legal Name (as on PAN) *</label>
+<input class="w-full px-3 py-2 text-xs border border-slate-300 rounded focus:border-brand-navy focus:ring-1 focus:ring-brand-navy" id="donor-name" placeholder="e.g. Radhika Sundaram" required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1" for="donor-phone">WhatsApp Mobile (For Receipt) *</label>
+<div class="flex">
+<span class="inline-flex items-center px-2.5 bg-slate-100 border border-r-0 border-slate-300 text-slate-600 text-xs rounded-l">+91</span>
+<input class="w-full px-3 py-2 text-xs border border-slate-300 rounded-r focus:border-brand-navy focus:ring-1 focus:ring-brand-navy" id="donor-phone" pattern="[0-9]{10}" placeholder="9876543210" required="" type="tel"/>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1" for="donor-email">Email Address (For Tax Form 10BE) *</label>
+<input class="w-full px-3 py-2 text-xs border border-slate-300 rounded focus:border-brand-navy focus:ring-1 focus:ring-brand-navy" id="donor-email" placeholder="radhika@example.com" required="" type="email"/>
+</div>
+<div class="flex items-start gap-2 pt-1">
+<input checked="" class="mt-0.5 rounded border-slate-300 text-brand-navy focus:ring-brand-navy" id="donor-pan-check" type="checkbox"/>
+<label class="text-xs text-slate-600 leading-snug" for="donor-pan-check">
+            I request Section 80G tax exemption certificate. (PAN card number will be captured on the secure payment gateway step as per CBDT regulations).
+          </label>
+</div>
+<!-- Primary Institutional CTA Button -->
+<button class="w-full py-3.5 px-4 bg-brand-amber hover:bg-brand-amber-hover text-white font-display font-bold text-sm sm:text-base rounded-md shadow transition-colors flex items-center justify-center gap-2 mt-2" id="checkout-btn" type="submit">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+<span>Proceed to Donate ₹<span id="cta-amount">1,500</span> Securely</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<!-- Official Payment Modes Trust Badges Strip -->
+<div class="pt-3 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+<div class="flex items-center gap-2">
+<span class="font-medium text-slate-600">Supported:</span>
+<span class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-semibold text-[10px] text-slate-700">UPI / QR</span>
+<span class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-semibold text-[10px] text-slate-700">GPay</span>
+<span class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-semibold text-[10px] text-slate-700">PhonePe</span>
+<span class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-semibold text-[10px] text-slate-700">Paytm</span>
+<span class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-semibold text-[10px] text-slate-700">Cards / NetBanking</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] text-slate-600">
+<span class="material-symbols-outlined text-[13px] text-emerald-700">shield</span>
+            Razorpay 256-bit SSL
+          </div>
+</div>
+</form>
+</section><section class="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm"><div class="relative overflow-hidden rounded-lg"><div class="absolute inset-0 bg-cover bg-center opacity-5 pointer-events-none" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA-QiR3Yc_Qp2JvRwK5M66tP5qpdL2U4L6yM9h1CxRtRi8ak3y1jmAPaIXxpM66Kj7Ry79KZmP9NEzt5r9bJTJZJqdn2YfcBm1RYwkk7p347LHTRDds5tzZX-Hk9nx4Hv1kX5iIS8iO3Z5c4ZTpUgP4oXEGkWxkJ76gfA501Y9S8A3CfR24VCzLWSrFrmE07o_ehVpXI9t_pgqM9w4Mz1mtaSZtGvMjXyKwXxDLoIsMV_NqqTQ18h63Aw');"></div><div class="relative z-10 space-y-4"><div class="flex items-center justify-between border-b border-slate-100 pb-2"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-navy text-[20px]">assignment_turned_in</span><h3 class="font-display font-bold text-base text-slate-900">Field Dispatch &amp; Audited Medical Case Study</h3></div><span class="text-[11px] bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded font-bold">Verified Registry ID #DL-882</span></div><div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center"><div class="sm:col-span-5 relative aspect-[4/3] rounded-md overflow-hidden bg-slate-100 border border-slate-200 shadow-xs"><img alt="Elderly grandfather receiving physical therapy assistance and holding walker with caring health worker in clinic" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDseqOym5vMkJS_W7sZfTRcIF6PmWqV_ylHhr8n_fu-MvTyFvNqrmR77ZkxTFFI5WCXWd2Wjj5zytvNKJiAhtAVfH7TpVL4GlqAo8-yMUwMGrCd_x5LymZeYZRDUmb3Vh1xe0NWe5f9lOT8BaAZRKBjJuHqxHevJvI7jiQUnwV4-k3p-g-PfwijY6Be6g4QSfzWJj5ubqPI_yCQA3kDmpKjrW8VCpV4WqSMoUKXjHn9RvsfivKSxJ4NBw"/><div class="absolute bottom-2 left-2 bg-brand-navy/90 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-sm flex items-center gap-1 font-medium"><span class="material-symbols-outlined text-[12px] text-emerald-400">accessibility_new</span>Day 14 Mobility Regained</div></div><div class="sm:col-span-7 space-y-2"><div class="flex items-center justify-between"><span class="font-display font-bold text-brand-navy text-sm sm:text-base">Ram Nath Ji, 82 yrs (Mehrauli Basti)</span><span class="text-[10px] text-slate-500 font-medium">Case Managed: 6 Months</span></div><p class="text-xs text-slate-600 leading-relaxed">"Ram Nath Ji was unable to stand for eight months due to degenerated knee cartilage and no family caregiver. With your contributions, our community team provided a specialized wide-stance orthopedic walker and bi-weekly rehabilitation exercises. Last week, he stood unassisted and took his first steps outdoors in over two years."</p><div class="bg-slate-50 border border-slate-200 rounded p-2 text-[11px] text-slate-600 space-y-0.5"><div class="flex justify-between font-medium"><span>Assigned Geriatric Therapist: <strong>Dr. Ananya Sen</strong></span><span class="text-emerald-700 font-semibold">Status: Fully Ambulatory</span></div><div>Audited Equipment: Dual-level Adjustable Walker (Batch #WK-2024-41)</div></div></div></div><div class="border-l-2 border-brand-navy pl-3 py-1 space-y-1 bg-slate-50/70 rounded-r"><p class="text-xs italic text-slate-700 leading-relaxed">"Chronic mobility impairment leads directly to rapid cognitive decline and depression in abandoned seniors. Supplying a simple ₹1,500 walker halts irreversible bed-confinement and gives an elder back their fundamental human dignity."</p><span class="text-[11px] font-bold text-brand-navy block">— Dr. K. N. Banerjee, MBBS, MD (Geriatrics), Advisory Board Member</span></div></div></div></section>
+<!-- GROUND OPERATIONS & AUDITED FINANCIAL ALLOCATION -->
+<section class="bg-white border border-slate-200 rounded-lg p-4 sm:p-5 shadow-sm space-y-4">
+<div class="space-y-1">
+<span class="text-xs uppercase tracking-wider font-bold text-brand-navy">Accountability &amp; Governance</span>
+<h3 class="font-display font-bold text-base text-slate-900">Where Every Rupee Goes</h3>
+<p class="text-xs text-slate-600">Audited under statutory ICMAI &amp; ICAI standard financial controls.</p>
+</div>
+<!-- Financial Distribution Breakdown -->
+<div class="space-y-3 pt-1">
+<div>
+<div class="flex justify-between text-xs font-semibold mb-1">
+<span class="text-slate-800">86.4% — Direct Field Program Delivery</span>
+<span class="text-brand-navy font-bold">Medicines, Mobility Equipment, Nutrition</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded overflow-hidden">
+<div class="bg-brand-navy h-full" style="width: 86.4%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-semibold mb-1">
+<span class="text-slate-800">8.2% — Direct Field Paramedics &amp; Logistics</span>
+<span class="text-slate-600 font-medium">Physiotherapists &amp; Ambulance Care</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded overflow-hidden">
+<div class="bg-slate-600 h-full" style="width: 8.2%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-semibold mb-1">
+<span class="text-slate-800">5.4% — Governance, Audit &amp; 80G Reporting</span>
+<span class="text-slate-600 font-medium">Statutory Compliance</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded overflow-hidden">
+<div class="bg-slate-400 h-full" style="width: 5.4%"></div>
+</div>
+</div>
+</div>
+<!-- Statutory Credentials Box -->
+<div class="mt-4 pt-3 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px]">
+<div class="p-2 bg-slate-50 border border-slate-200 rounded">
+<span class="block text-slate-500 font-medium">Income Tax 80G</span>
+<strong class="text-brand-navy font-bold">AABTS8421RE20214</strong>
+</div>
+<div class="p-2 bg-slate-50 border border-slate-200 rounded">
+<span class="block text-slate-500 font-medium">Income Tax 12A</span>
+<strong class="text-brand-navy font-bold">AABTS8421RE20191</strong>
+</div>
+<div class="p-2 bg-slate-50 border border-slate-200 rounded">
+<span class="block text-slate-500 font-medium">NITI Aayog DARPAN</span>
+<strong class="text-brand-navy font-bold">DL/2021/0289410</strong>
+</div>
+<div class="p-2 bg-slate-50 border border-slate-200 rounded">
+<span class="block text-slate-500 font-medium">MCA CSR-1 Reg.</span>
+<strong class="text-brand-navy font-bold">CSR00018492</strong>
+</div>
+</div>
+</section>
+<!-- GROUND STORY & BENEFICIARY VIGNETTE -->
+<section class="bg-white border border-slate-200 rounded-lg p-4 sm:p-5 shadow-sm space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-brand-navy text-[20px]">assignment_turned_in</span>
+<h3 class="font-display font-bold text-base text-slate-900">Field Dispatch &amp; Verified Case Study</h3>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 p-3.5 bg-slate-50 border border-slate-200 rounded-md">
+<!-- Beneficiary Mini Vignette -->
+<div class="flex-1 space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-semibold text-brand-navy text-sm">Savitri Devi, 78 yrs</span>
+<span class="text-[11px] bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded font-medium">Beneficiary #DL-882</span>
+</div>
+<p class="text-xs text-slate-600 leading-relaxed">
+            "Savitri Ji lived with acute osteoarthritis and chronic bilateral knee stiffness in Mehrauli without family assistance. Through donor support, she received a quad-base ergonomic walker and bi-weekly physiotherapy visits, regaining her ability to walk independently to the local dispensary."
+          </p>
+<div class="text-[11px] text-slate-500 font-medium">
+            Assisted on: December 14, 2024 • Verified by Social Worker Ananya Sen (MSW)
+          </div>
+</div>
+</div>
+<!-- Field Doctor Quote -->
+<div class="border-l-2 border-brand-navy pl-3 py-1 space-y-1">
+<p class="text-xs italic text-slate-700 leading-relaxed">
+          "Chronic ailments among underprivileged seniors often worsen simply because ₹500 to ₹1,000 monthly medications go unpurchased. Regular doorstep supply stops preventable hospitalization entirely."
+        </p>
+<span class="text-[11px] font-bold text-brand-navy block">
+          — Dr. K. N. Banerjee, MBBS, MD (Geriatrics), Advisory Board Member
+        </span>
+</div>
+</section>
+<!-- FREQUENTLY ASKED QUESTIONS (Institutional, Clear) -->
+<section class="bg-white border border-slate-200 rounded-lg p-4 sm:p-5 shadow-sm space-y-3">
+<h3 class="font-display font-bold text-base text-slate-900">Donor Clarifications</h3>
+<div class="space-y-2 text-xs">
+<details class="border border-slate-200 rounded p-2.5 group">
+<summary class="font-semibold text-slate-800 cursor-pointer flex justify-between items-center list-none">
+<span>When and how will I receive my 80G Tax Certificate?</span>
+<span class="material-symbols-outlined text-[18px] text-slate-500 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="text-slate-600 mt-2 leading-relaxed">
+            Immediately following transaction settlement, your digitally signed 80G tax receipt is emailed to your registered address and dispatched via WhatsApp. In addition, an annual Form 10BE consolidated certificate is filed with the Income Tax Department at the end of the financial year.
+          </p>
+</details>
+<details class="border border-slate-200 rounded p-2.5 group">
+<summary class="font-semibold text-slate-800 cursor-pointer flex justify-between items-center list-none">
+<span>Can I donate using UPI (Google Pay, PhonePe, Paytm, BHIM)?</span>
+<span class="material-symbols-outlined text-[18px] text-slate-500 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="text-slate-600 mt-2 leading-relaxed">
+            Yes. Our payment gateway seamlessly supports all UPI applications, direct QR scan, NetBanking across all major public and private banks, and Indian debit/credit cards.
+          </p>
+</details>
+<details class="border border-slate-200 rounded p-2.5 group">
+<summary class="font-semibold text-slate-800 cursor-pointer flex justify-between items-center list-none">
+<span>How can I audit how my donation was utilized?</span>
+<span class="material-symbols-outlined text-[18px] text-slate-500 group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="text-slate-600 mt-2 leading-relaxed">
+            We publish quarterly field dispatch reports detailing beneficiary distribution registries (with names masked for dignity), audited receipts, and balance sheets verified by statutory independent chartered accountants.
+          </p>
+</details>
+</div>
+</section>
+</main>
+<!-- STICKY INSTITUTIONAL ACTION BAR (Mobile Viewport) -->
+<div class="fixed bottom-0 inset-x-0 bg-white border-t border-slate-200 p-3 shadow-lg z-30 sm:hidden">
+<div class="flex items-center gap-3 max-w-md mx-auto">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-medium leading-none">Tax Exempt Gift</span>
+<span class="text-base font-display font-bold text-brand-navy leading-tight">₹<span id="bottom-bar-amount">1,500</span></span>
+</div>
+<button class="flex-1 py-2.5 px-4 bg-brand-amber hover:bg-brand-amber-hover text-white text-xs font-bold rounded shadow transition-colors flex items-center justify-center gap-1.5" onclick="scrollToDonationModule()">
+<span class="material-symbols-outlined text-[16px]">volunteer_activism</span>
+<span>Donate Now (80G)</span>
+</button>
+</div>
+</div>
+<!-- INSTITUTIONAL FOOTER -->
+<footer class="bg-brand-navy-dark text-slate-300 text-xs border-t border-slate-800 py-8 px-4 mt-auto">
+<div class="max-w-4xl mx-auto space-y-6">
+<!-- Top Grid: Registered Address & Downloads -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-6 border-b border-slate-800">
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<span class="font-display font-bold text-white text-sm">SevaSparsh Foundation</span>
+<span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded border border-slate-700">Section 8 Regd.</span>
+</div>
+<p class="text-slate-400 text-xs leading-relaxed">
+<strong>Registered Office:</strong> Institutional Area, Sector 4, R.K. Puram, New Delhi, Delhi 110022<br/>
+<strong>National Helpline:</strong> +91 (011) 4920-8100 (Mon–Sat, 9:30 AM – 6:00 PM IST)<br/>
+<strong>Email:</strong> donorrelations@sevasparsh.org.in
+          </p>
+</div>
+<div class="space-y-2">
+<span class="font-semibold text-white block">Audited Disclosures &amp; Statutory Filings</span>
+<div class="space-y-1.5">
+<a class="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors" href="#download-audit" onclick="simulateReportDownload('FY 2023-24 Audited Financial Statement')">
+<span class="material-symbols-outlined text-[16px] text-brand-amber">picture_as_pdf</span>
+<span>FY 2023-24 Audited Balance Sheet &amp; Form 10B</span>
+</a>
+<a class="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors" href="#download-darpan" onclick="simulateReportDownload('NITI Aayog Darpan Certificate')">
+<span class="material-symbols-outlined text-[16px] text-brand-amber">picture_as_pdf</span>
+<span>NITI Aayog Darpan Accreditation DL/2021/0289410</span>
+</a>
+<a class="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors" href="#download-csr" onclick="simulateReportDownload('MCA CSR-1 Approval')">
+<span class="material-symbols-outlined text-[16px] text-brand-amber">picture_as_pdf</span>
+<span>MCA CSR-1 Registration Approval Letter</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Disclaimer & Legal Bottom -->
+<div class="text-[11px] text-slate-400 leading-relaxed space-y-2">
+<p>
+          SevaSparsh Foundation is a registered Section 8 not-for-profit company incorporated under the Companies Act, 2013 (CIN: U85300DL2021NPL382910). Donations are exempt under Section 80G(5)(vi) of the Income Tax Act, 1961. We do not accept cash donations above statutory limits. All online contributions are routed through RBI-licensed payment aggregators.
+        </p>
+<p class="text-slate-500">
+          © 2025 SevaSparsh Foundation. All rights reserved. | <a class="hover:underline" href="#privacy">Privacy Policy</a> | <a class="hover:underline" href="#terms">Terms of Giving &amp; Refund Policy</a>
+</p>
+</div>
+</div>
+</footer>
+<!-- SIMULATED SUCCESS NOTIFICATION TOAST -->
+<div class="fixed top-5 right-4 left-4 sm:left-auto sm:w-96 z-50 bg-white border-2 border-emerald-600 rounded-lg p-4 shadow-2xl hidden animate-in fade-in slide-in-from-top-4" id="payment-toast">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-600 text-[24px] shrink-0">task_alt</span>
+<div class="flex-1 space-y-1">
+<h4 class="font-display font-bold text-sm text-slate-900">Donation Verified &amp; Cleared</h4>
+<p class="text-xs text-slate-600 leading-normal" id="toast-body-text">
+          Thank you! Your donation has been acknowledged. The 80G tax receipt has been generated.
+        </p>
+<div class="text-[11px] text-emerald-800 font-semibold pt-1">
+          Receipt Ref: <span id="toast-ref-no">SS-80G-2025-9182</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-slate-600" onclick="document.getElementById('payment-toast').classList.add('hidden')">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- SCRIPT LOGIC -->
+<script>
+    let activeAmount = 1500;
+    let currentFrequency = 'once';
+
+    function selectFrequency(freq) {
+      currentFrequency = freq;
+      const tabOnce = document.getElementById('tab-once');
+      const tabMonthly = document.getElementById('tab-monthly');
+
+      if (freq === 'once') {
+        tabOnce.className = "py-2 px-3 rounded text-center transition-all bg-white text-brand-navy shadow-sm border border-slate-200";
+        tabMonthly.className = "py-2 px-3 rounded text-center transition-all text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1";
+      } else {
+        tabMonthly.className = "py-2 px-3 rounded text-center transition-all bg-white text-brand-navy shadow-sm border border-slate-200 flex items-center justify-center gap-1";
+        tabOnce.className = "py-2 px-3 rounded text-center transition-all text-slate-600 hover:text-slate-900";
+      }
+    }
+
+    function setTier(amount, impactDesc) {
+      activeAmount = amount;
+      document.getElementById('custom-input').value = amount;
+      updateDisplays(amount);
+      document.getElementById('tier-impact-desc').textContent = impactDesc;
+
+      // Update card visual state
+      document.querySelectorAll('.tier-card').forEach(card => {
+        const cardAmt = parseInt(card.getAttribute('data-amount'));
+        if (cardAmt === amount) {
+          card.classList.add('border-2', 'border-brand-navy');
+          card.classList.remove('border-slate-200');
+        } else {
+          card.classList.remove('border-2', 'border-brand-navy');
+          card.classList.add('border-slate-200');
+        }
+      });
+    }
+
+    function handleCustomAmountChange(val) {
+      const num = parseInt(val) || 0;
+      activeAmount = num;
+      updateDisplays(num);
+
+      // Dynamically adjust impact description for custom values
+      const desc = document.getElementById('tier-impact-desc');
+      if (num >= 5000) {
+        desc.textContent = "Complete Critical Medical Foster Kit for a Bedridden Senior";
+      } else if (num >= 3500) {
+        desc.textContent = "Heavy-duty Ergonomic Wheelchair & 30-Day Nutrition Support";
+      } else if (num >= 1500) {
+        desc.textContent = "Pair of Custom Mobility Walkers + Palliative Nurse Visit";
+      } else if (num >= 750) {
+        desc.textContent = "1 Senior's Monthly Diabetic & Hypertension Prescriptions";
+      } else {
+        desc.textContent = "General field medication & patient mobilization assistance";
+      }
+
+      // Deselect predefined cards if custom mismatch
+      document.querySelectorAll('.tier-card').forEach(card => {
+        const cardAmt = parseInt(card.getAttribute('data-amount'));
+        if (cardAmt === num) {
+          card.classList.add('border-2', 'border-brand-navy');
+          card.classList.remove('border-slate-200');
+        } else {
+          card.classList.remove('border-2', 'border-brand-navy');
+          card.classList.add('border-slate-200');
+        }
+      });
+    }
+
+    function updateDisplays(amount) {
+      const formatted = amount.toLocaleString('en-IN');
+      document.getElementById('cta-amount').textContent = formatted;
+      document.getElementById('bottom-bar-amount').textContent = formatted;
+    }
+
+    function scrollToDonationModule() {
+      const el = document.getElementById('donation-module');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    function simulateReportDownload(docName) {
+      alert(`Initiating verified download for: ${docName}. (PDF Document from Registrar of Companies Archive)`);
+    }
+
+    function processCheckout(event) {
+      event.preventDefault();
+      const donorName = document.getElementById('donor-name').value;
+      const donorEmail = document.getElementById('donor-email').value;
+      const checkoutBtn = document.getElementById('checkout-btn');
+
+      if (!activeAmount || activeAmount < 100) {
+        alert("Please enter a valid donation amount (minimum ₹100).");
+        return;
+      }
+
+      // Simulate institutional gateway state
+      checkoutBtn.disabled = true;
+      const originalHtml = checkoutBtn.innerHTML;
+      checkoutBtn.innerHTML = `
+        <span class="material-symbols-outlined text-[20px] animate-spin">progress_activity</span>
+        <span>Routing to Secure Banking Gateway...</span>
+      `;
+
+      setTimeout(() => {
+        checkoutBtn.disabled = false;
+        checkoutBtn.innerHTML = originalHtml;
+
+        const randomRef = 'SS-80G-2025-' + Math.floor(1000 + Math.random() * 9000);
+        document.getElementById('toast-ref-no').textContent = randomRef;
+        document.getElementById('toast-body-text').innerHTML = `
+          Heartfelt gratitude, <strong>${donorName}</strong>. Your contribution of <strong>₹${activeAmount.toLocaleString('en-IN')}</strong> (${currentFrequency === 'monthly' ? 'Monthly' : 'One-Time'}) was successfully authorized. Digital 80G certificate dispatched to <em>${donorEmail}</em>.
+        `;
+
+        const toast = document.getElementById('payment-toast');
+        toast.classList.remove('hidden');
+
+        setTimeout(() => {
+          toast.classList.add('hidden');
+        }, 8000);
+      }, 1300);
+    }
+  </script>
+</body></html>

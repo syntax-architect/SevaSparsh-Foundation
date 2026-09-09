@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-navy: #0f294a;
+  --color-brand-navy-dark: #08182d;
+  --color-brand-navy-light: #1e3a61;
+  --color-brand-amber: #c85a17;
+  --color-brand-amber-hover: #b24d10;
+  --color-brand-emerald: #0d6e5a;
+  --color-brand-emerald-light: #e6f4f1;
+  --color-brand-stone: #f8fafc;
+  --color-brand-border: #e2e8f0;
+
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
+}
+
+@layer base {
+  html, body {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-color: #f8fafc;
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+}
+
+::-webkit-scrollbar { display: none; }
