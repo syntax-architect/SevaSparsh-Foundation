@@ -5,15 +5,58 @@ import crypto from 'crypto';
 import Razorpay from 'razorpay';
 import { createClient } from '@supabase/supabase-js';
 import Groq from 'groq-sdk';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+import { z } from 'zod';
+
 // Load environment variables
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+// Security Middleware: Set security HTTP headers
+app.use(helmet());
+
+// Configure CORS
+const allowedOrigins = [process.env.FRONTEND_URL || 'http://localhost:5173'];
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
+
+// Body parser, reading data from body into req.body
+app.use(express.json({ limit: '10kb' }));
+
+// Security Middleware: Rate limiting to prevent API abuse
+const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: { error: 'Too many requests from this IP, please try again later.' }
+});
+
+const paymentLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10, // strict limit for payments
+  message: { error: 'Too many payment requests from this IP, please try again later.' }
+});
+
+const chatLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 30, // moderate limit for chat
+  message: { error: 'Too many chat requests from this IP, please try again later.' }
+});
+
+// Apply general rate limiter to all API routes
+app.use('/api/', generalLimiter);
+
+
 
 // Initialize Supabase Client (Using Service Role Key for backend bypass of RLS)
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -33,17 +76,30 @@ const razorpay = new Razorpay({
 });
 
 /**
+ * Validation schema for donation creation
+ */
+const createOrderSchema = z.object({
+  donor_name: z.string().min(2).max(100),
+  email: z.string().email(),
+  phone: z.string().regex(/^[0-9]{10}$/, 'Must be a 10-digit phone number'),
+  pan_number: z.string().optional(),
+  amount: z.number().int().positive().min(100, 'Minimum donation is ₹100')
+});
+
+/**
  * Endpoint to create a Razorpay order and pending donation record
  * POST /api/payment/create-order
  */
-app.post('/api/payment/create-order', async (req, res) => {
+app.post('/api/payment/create-order', paymentLimiter, async (req, res) => {
   try {
-    const { donor_name, email, phone, pan_number, amount } = req.body;
-
-    // Validate inputs
-    if (!donor_name || !email || !phone || !amount) {
-      return res.status(400).json({ error: 'Missing required fields' });
+    // Validate inputs using Zod
+    const validatedData = createOrderSchema.safeParse(req.body);
+    
+    if (!validatedData.success) {
+      return res.status(400).json({ error: 'Invalid input data', details: validatedData.error.errors });
     }
+
+    const { donor_name, email, phone, pan_number, amount } = validatedData.data;
 
     // Razorpay expects amount in subunits (paise for INR)
     const amountInPaise = Math.round(amount * 100);
@@ -234,7 +290,7 @@ app.get('/api/urgent-appeal', async (req, res) => {
  * Endpoint to handle AI Chat Support using Groq API
  * POST /api/chat-support
  */
-app.post('/api/chat-support', async (req, res) => {
+app.post('/api/chat-support', chatLimiter, async (req, res) => {
   try {
     const { message } = req.body;
     if (!message) {

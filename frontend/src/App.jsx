@@ -321,7 +321,7 @@ function App() {
                   <span className="material-symbols-outlined text-[16px]">priority_high</span>
                 </div>
                 <span className="font-medium leading-relaxed">
-                  <strong className="text-brand-amber font-bold text-sm">{urgentAppeal.title}:</strong> <span dangerouslySetInnerHTML={{ __html: urgentAppeal.message }} />
+                  <strong className="text-brand-amber font-bold text-sm">{urgentAppeal.title}:</strong> <span>{urgentAppeal.message}</span>
                 </span>
               </div>
               <span className="hidden sm:inline-block bg-gradient-to-r from-brand-amber to-brand-amber-hover text-white text-[10px] font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest whitespace-nowrap shadow-sm">Priority #1</span>
