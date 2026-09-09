@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DonationCheckout from './components/DonationCheckout';
+import AIChatSupport from './components/AIChatSupport';
 import heroImage from './assets/hero.png';
+import logoImage from './assets/logo.jpg';
 
 function App() {
   const [recentDonations, setRecentDonations] = useState([]);
   const [currentDonationIndex, setCurrentDonationIndex] = useState(0);
+  const [activePolicy, setActivePolicy] = useState(null);
+  const [urgentAppeal, setUrgentAppeal] = useState({
+    title: "Urgent Batch Dispatch",
+    count: 32,
+    message: "Only 32 elders in this verified cohort awaiting mobility walkers before winter frost."
+  });
 
   // Fetch intelligent mock donations from Groq backend
   useEffect(() => {
@@ -21,10 +29,28 @@ function App() {
       }
     };
 
+    const fetchAppeal = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/urgent-appeal');
+        const data = await response.json();
+        if (data.title && data.message) {
+          setUrgentAppeal(data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch urgent appeal:', error);
+      }
+    };
+
     fetchDonations();
-    // Refetch every 2 minutes
+    fetchAppeal();
+    // Refetch donations every 2 minutes
     const fetchInterval = setInterval(fetchDonations, 120000);
-    return () => clearInterval(fetchInterval);
+    // Refetch appeal every 5 minutes
+    const appealInterval = setInterval(fetchAppeal, 300000);
+    return () => {
+      clearInterval(fetchInterval);
+      clearInterval(appealInterval);
+    };
   }, []);
 
   // Cycle through donations every 5 seconds
@@ -54,9 +80,7 @@ function App() {
     }
   };
 
-  const simulateReportDownload = (docName) => {
-    alert(`Initiating verified download for: ${docName}. (PDF Document from Registrar of Companies Archive)`);
-  };
+
 
   return (
     <div className="bg-slate-50 min-h-screen flex flex-col font-sans relative overflow-x-hidden">
@@ -78,9 +102,7 @@ function App() {
         </div>
         <div className="h-16 px-4 flex items-center justify-between gap-3 max-w-5xl mx-auto">
           <div className="flex items-center gap-3 group cursor-pointer">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-navy to-brand-navy-light flex items-center justify-center text-white font-display font-bold text-lg shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-              SS
-            </div>
+            <img src={logoImage} alt="Kinship & Care Logo" className="w-10 h-10 rounded-xl shadow-md border border-slate-200 object-cover group-hover:shadow-lg transition-all duration-300 group-hover:scale-105" />
             <div className="flex flex-col">
               <span className="font-display font-bold text-base bg-gradient-to-r from-brand-navy-dark to-brand-navy bg-clip-text text-transparent leading-tight tracking-tight">SevaSparsh Foundation</span>
               <span className="text-[11px] text-slate-500 font-medium tracking-wide">National Elder Care & Mobility Mission</span>
@@ -174,7 +196,7 @@ function App() {
           </div>
         </motion.section>
 
-        {/* AUTHENTIC FUNDRAISER AUDITED TRACKER */}
+        {/* IMPACT TRACKER */}
         <motion.section 
           initial={{ opacity: 0, y: 20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
@@ -191,7 +213,7 @@ function App() {
                   <span className="material-symbols-outlined text-[16px]">priority_high</span>
                 </div>
                 <span className="font-medium leading-relaxed">
-                  <strong className="text-brand-amber font-bold text-sm">Urgent Batch Dispatch:</strong> Only <strong className="underline font-bold text-amber-950">32 elders</strong> in this verified cohort awaiting mobility walkers before winter frost.
+                  <strong className="text-brand-amber font-bold text-sm">{urgentAppeal.title}:</strong> <span dangerouslySetInnerHTML={{ __html: urgentAppeal.message }} />
                 </span>
               </div>
               <span className="hidden sm:inline-block bg-gradient-to-r from-brand-amber to-brand-amber-hover text-white text-[10px] font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest whitespace-nowrap shadow-sm">Priority #1</span>
@@ -265,7 +287,7 @@ function App() {
                 <div className="w-8 h-8 rounded-lg bg-white shadow-sm border border-slate-100 flex items-center justify-center">
                   <span className="material-symbols-outlined text-[18px] text-brand-amber">assignment_turned_in</span>
                 </div>
-                Field Dispatch & Audited Medical Case Study
+                Field Dispatch & Medical Case Study
               </div>
               <div className="hidden sm:block text-[10px] bg-emerald-50 text-emerald-700 font-bold px-2.5 py-1 rounded-md border border-emerald-100 uppercase tracking-wider">
                 Verified ID #DL-882
@@ -300,7 +322,7 @@ function App() {
                 <strong className="text-emerald-700 text-sm flex items-center sm:justify-end gap-1"><span className="material-symbols-outlined text-[16px]">check_circle</span> Fully Ambulatory</strong>
               </div>
               <div className="col-span-1 sm:col-span-2 flex flex-col gap-0.5 pt-3 border-t border-slate-200/60">
-                <span className="text-slate-500 font-medium">Audited Equipment</span>
+                <span className="text-slate-500 font-medium">Equipment Provided</span>
                 <strong className="text-slate-800">Dual-level Adjustable Walker (Batch #WK-2024-41)</strong>
               </div>
             </div>
@@ -353,7 +375,7 @@ function App() {
           </div>
         </motion.section>
 
-        {/* GROUND OPERATIONS & AUDITED FINANCIAL ALLOCATION */}
+        {/* GROUND OPERATIONS & FINANCIAL ALLOCATION */}
         <motion.section 
           initial={{ opacity: 0, y: 20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
@@ -364,7 +386,7 @@ function App() {
           <div className="space-y-1.5">
             <span className="text-xs uppercase tracking-widest font-bold text-slate-400">Accountability & Governance</span>
             <h3 className="font-display font-bold text-xl text-brand-navy tracking-tight">Where Every Rupee Goes</h3>
-            <p className="text-sm text-slate-500">Audited under statutory ICMAI & ICAI standard financial controls.</p>
+            <p className="text-sm text-slate-500">Transparent fund allocation for maximum impact.</p>
           </div>
           <div className="space-y-4 pt-2">
             <div className="group">
@@ -427,7 +449,7 @@ function App() {
                 <span className="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 transition-transform duration-300">expand_more</span>
               </summary>
               <div className="text-slate-600 mt-3 leading-relaxed text-xs sm:text-sm pl-1 border-l-2 border-brand-amber/30">
-                We publish quarterly field dispatch reports detailing beneficiary distribution registries (with names masked for dignity), audited receipts, and balance sheets verified by statutory independent chartered accountants.
+                We publish quarterly field dispatch reports detailing beneficiary distribution registries (with names masked for dignity) and medical camp outcomes.
               </div>
             </details>
           </div>
@@ -451,10 +473,10 @@ function App() {
       {/* INSTITUTIONAL FOOTER */}
       <footer className="bg-brand-navy text-slate-300 text-sm border-t border-brand-navy-dark py-10 px-4 mt-auto">
         <div className="max-w-3xl mx-auto space-y-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pb-8 border-b border-white/10">
+          <div className="grid grid-cols-1 pb-8 border-b border-white/10">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white font-display font-bold text-sm">SS</div>
+                <img src={logoImage} alt="Kinship & Care Logo" className="w-8 h-8 rounded-lg object-cover shadow-sm" />
                 <span className="font-display font-bold text-white text-base">SevaSparsh Foundation</span>
               </div>
               <p className="text-slate-400 text-xs leading-relaxed max-w-xs">
@@ -462,15 +484,6 @@ function App() {
                 <strong className="text-slate-300">National Helpline:</strong><br/>+91 (011) 4920-8100 <span className="opacity-70">(Mon–Sat, 9:30 AM – 6:00 PM IST)</span><br/><br/>
                 <strong className="text-slate-300">Email:</strong> donorrelations@sevasparsh.org.in
               </p>
-            </div>
-            <div className="space-y-4">
-              <span className="font-bold text-white text-sm uppercase tracking-wider">Audited Disclosures</span>
-              <div className="space-y-3">
-                <a className="flex items-start gap-2.5 text-slate-300 hover:text-white transition-colors cursor-pointer group text-xs" onClick={() => simulateReportDownload('FY 2023-24 Audited Financial Statement')}>
-                  <span className="material-symbols-outlined text-[18px] text-brand-amber mt-0.5 group-hover:scale-110 transition-transform">picture_as_pdf</span>
-                  <span className="leading-snug">FY 2023-24 Audited Balance Sheet</span>
-                </a>
-              </div>
             </div>
           </div>
           <div className="text-[11px] text-slate-400/80 leading-relaxed space-y-4 text-center sm:text-left">
@@ -480,13 +493,60 @@ function App() {
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/5">
               <span>© 2025 SevaSparsh Foundation. All rights reserved.</span>
               <div className="flex items-center gap-4">
-                <span className="hover:text-white transition-colors cursor-pointer">Privacy Policy</span>
-                <span className="hover:text-white transition-colors cursor-pointer">Terms of Giving & Refund Policy</span>
+                <span onClick={() => setActivePolicy('privacy')} className="hover:text-white transition-colors cursor-pointer">Privacy Policy</span>
+                <span onClick={() => setActivePolicy('terms')} className="hover:text-white transition-colors cursor-pointer">Terms & No Refund Policy</span>
               </div>
             </div>
           </div>
         </div>
       </footer>
+
+      {/* Floating AI Chat Support Widget */}
+      <AIChatSupport />
+
+      {/* Policy Modal */}
+      <AnimatePresence>
+        {activePolicy && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-brand-navy-dark/80 backdrop-blur-sm">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="bg-white rounded-2xl w-full max-w-2xl max-h-[85vh] overflow-hidden shadow-2xl flex flex-col"
+            >
+              <div className="p-5 sm:p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                <h2 className="font-display font-bold text-xl text-brand-navy">
+                  {activePolicy === 'privacy' ? 'Privacy Policy' : 'Terms of Giving & No Refund Policy'}
+                </h2>
+                <button onClick={() => setActivePolicy(null)} className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-200 hover:bg-slate-300 text-slate-600 transition-colors">
+                  <span className="material-symbols-outlined text-[18px]">close</span>
+                </button>
+              </div>
+              <div className="p-5 sm:p-6 overflow-y-auto text-sm text-slate-600 space-y-4">
+                {activePolicy === 'privacy' ? (
+                  <>
+                    <h3 className="font-bold text-slate-800">1. Information Collection</h3>
+                    <p>We collect essential information such as your name, email, and phone number exclusively to process your contribution securely and provide you with impact updates. We do not sell or share your data with third-party marketers.</p>
+                    <h3 className="font-bold text-slate-800">2. Secure Transactions</h3>
+                    <p>All financial transactions are routed through RBI-compliant, 256-bit SSL encrypted payment gateways. We do not store your credit card or UPI details on our servers.</p>
+                    <h3 className="font-bold text-slate-800">3. Communication</h3>
+                    <p>By providing your contact details, you consent to receive transaction receipts and critical project updates. You may opt out of non-transactional communications at any time.</p>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="font-bold text-slate-800">1. Nature of Contribution</h3>
+                    <p>All contributions made to the SevaSparsh Foundation are voluntary and intended to support our field operations for elderly care and mobility.</p>
+                    <h3 className="font-bold text-slate-800">2. Strict No-Refund Policy</h3>
+                    <p className="text-brand-amber font-semibold bg-amber-50 p-4 rounded-lg border border-amber-100">Please note that all donations are final. Due to the immediate deployment of funds into our critical care programs, we operate under a strict <strong>NO REFUND</strong> policy. By completing your transaction, you acknowledge and agree that your contribution cannot be cancelled or refunded under any circumstances.</p>
+                    <h3 className="font-bold text-slate-800">3. Dispute Resolution</h3>
+                    <p>Any disputes arising from transactions will be subject to the exclusive jurisdiction of the courts in New Delhi, India.</p>
+                  </>
+                )}
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

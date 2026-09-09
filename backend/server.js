@@ -228,39 +228,39 @@ app.get('/api/urgent-appeal', async (req, res) => {
   }
 });
 
+
+
 /**
- * Endpoint to get intelligently shuffled realistic recent donations using Groq API
- * GET /api/recent-donations
+ * Endpoint to handle AI Chat Support using Groq API
+ * POST /api/chat-support
  */
-app.get('/api/recent-donations', async (req, res) => {
+app.post('/api/chat-support', async (req, res) => {
   try {
+    const { message } = req.body;
+    if (!message) {
+      return res.status(400).json({ error: 'Message is required' });
+    }
+
     const chatCompletion = await groq.chat.completions.create({
       messages: [
         {
           role: "system",
-          content: "You generate realistic fake donation data for an Indian NGO to display as a live ticker. Return ONLY valid JSON with a root 'donations' array."
+          content: "You are the support assistant for SevaSparsh Foundation, an Indian NGO. Answer questions politely, warmly, and concisely. Keep answers under 3 sentences. Assure donors that their donations are 100% tax-exempt under 80G and are securely processed. We provide mobility walkers, medicine, and hot meals to abandoned elders in India."
         },
         {
           role: "user",
-          content: "Generate 10 realistic recent donations. Fields: 'name' (typical Indian name, last initial or full), 'amount' (realistic amounts like 500, 1000, 1500, 2100, 5100), 'location' (Indian city), 'timeAgo' (e.g., '1m ago', '3m ago', '12m ago'). Output JSON format: { \"donations\": [ {\"name\": \"...\", \"amount\": 1500, \"location\": \"...\", \"timeAgo\": \"...\"} ] }"
+          content: message
         }
       ],
       model: "llama3-8b-8192",
-      temperature: 0.8,
-      response_format: { type: "json_object" }
+      temperature: 0.5,
     });
 
-    const data = JSON.parse(chatCompletion.choices[0]?.message?.content || "{\"donations\":[]}");
-    res.status(200).json(data);
+    const reply = chatCompletion.choices[0]?.message?.content || "I'm sorry, I'm having trouble understanding right now. Please email us.";
+    res.status(200).json({ reply });
   } catch (error) {
-    console.error('Error fetching from Groq:', error);
-    res.status(500).json({ 
-      donations: [
-        { name: "Aarav M.", amount: 1500, location: "Bengaluru", timeAgo: "4m ago" },
-        { name: "Priya S.", amount: 2100, location: "Mumbai", timeAgo: "10m ago" },
-        { name: "Rahul D.", amount: 500, location: "Delhi", timeAgo: "15m ago" }
-      ]
-    });
+    console.error('Error with chat support:', error);
+    res.status(500).json({ reply: 'Sorry, I am facing network issues. Please contact support@sevasparsh.org.in.' });
   }
 });
 
