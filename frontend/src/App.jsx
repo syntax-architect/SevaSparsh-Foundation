@@ -195,6 +195,114 @@ function App() {
             </div>
           </div>
         </motion.section>
+        {/* IMPACT METRICS BANNER */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="bg-brand-navy rounded-3xl p-6 sm:p-10 shadow-lg text-white"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+            <div className="space-y-2 pt-4 sm:pt-0">
+              <span className="text-4xl sm:text-5xl font-display font-bold text-brand-amber drop-shadow-sm">14,200+</span>
+              <p className="text-sm text-slate-300 font-medium uppercase tracking-wider">Elders Supported</p>
+            </div>
+            <div className="space-y-2 pt-6 sm:pt-0">
+              <span className="text-4xl sm:text-5xl font-display font-bold text-brand-emerald drop-shadow-sm">50+</span>
+              <p className="text-sm text-slate-300 font-medium uppercase tracking-wider">Active Field Clinics</p>
+            </div>
+            <div className="space-y-2 pt-6 sm:pt-0">
+              <span className="text-4xl sm:text-5xl font-display font-bold text-white drop-shadow-sm">100%</span>
+              <p className="text-sm text-slate-300 font-medium uppercase tracking-wider">Transparent Delivery</p>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* CORE PROGRAMS GRID */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="space-y-6"
+        >
+          <div className="text-center space-y-2">
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-brand-navy tracking-tight">Our Core Programs</h2>
+            <p className="text-slate-500 text-sm">Targeted interventions for maximum field impact.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="bg-white rounded-2xl p-6 border border-slate-200/60 shadow-sm hover:shadow-md transition-shadow group">
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                <span className="material-symbols-outlined text-[24px]">accessible_forward</span>
+              </div>
+              <h3 className="font-bold text-slate-800 text-lg mb-2">Mobility Aids</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">Providing ergonomic walkers and heavy-duty wheelchairs to restore independence and prevent bedsores.</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 border border-slate-200/60 shadow-sm hover:shadow-md transition-shadow group">
+              <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                <span className="material-symbols-outlined text-[24px]">home_health</span>
+              </div>
+              <h3 className="font-bold text-slate-800 text-lg mb-2">Palliative Care</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">Doorstep medical assistance, physiotherapy, and chronic illness medications for bedridden seniors.</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 border border-slate-200/60 shadow-sm hover:shadow-md transition-shadow group">
+              <div className="w-12 h-12 rounded-xl bg-brand-navy/5 text-brand-navy flex items-center justify-center mb-4 group-hover:bg-brand-navy group-hover:text-white transition-colors">
+                <span className="material-symbols-outlined text-[24px]">restaurant</span>
+              </div>
+              <h3 className="font-bold text-slate-800 text-lg mb-2">Nutrition Support</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">Daily hot meals, high-protein supplements, and essential grocery rations for abandoned elders.</p>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* WORKFLOW TIMELINE */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="bg-slate-100 rounded-3xl p-6 sm:p-10 border border-slate-200/60 space-y-8"
+        >
+          <div className="text-center space-y-2">
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-brand-navy tracking-tight">How Your Support Reaches Them</h2>
+            <p className="text-slate-500 text-sm">A 100% transparent and verified distribution process.</p>
+          </div>
+          <div className="relative">
+            {/* Connecting line (hidden on mobile) */}
+            <div className="hidden md:block absolute top-[40px] left-[15%] right-[15%] h-0.5 bg-slate-300"></div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="relative text-center space-y-4">
+                <div className="w-20 h-20 mx-auto rounded-full bg-white border-4 border-slate-100 shadow-sm flex items-center justify-center z-10 relative text-brand-navy">
+                  <span className="material-symbols-outlined text-[32px]">person_search</span>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-800 mb-1">1. Identify</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">Local volunteers and partner NGOs identify abandoned seniors in urgent need of medical or mobility support.</p>
+                </div>
+              </div>
+              <div className="relative text-center space-y-4">
+                <div className="w-20 h-20 mx-auto rounded-full bg-white border-4 border-slate-100 shadow-sm flex items-center justify-center z-10 relative text-brand-amber">
+                  <span className="material-symbols-outlined text-[32px]">local_shipping</span>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-800 mb-1">2. Dispatch</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">Verified medical equipment and high-priority medicines are dispatched directly to the beneficiary's doorstep.</p>
+                </div>
+              </div>
+              <div className="relative text-center space-y-4">
+                <div className="w-20 h-20 mx-auto rounded-full bg-white border-4 border-slate-100 shadow-sm flex items-center justify-center z-10 relative text-emerald-600">
+                  <span className="material-symbols-outlined text-[32px]">verified</span>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-800 mb-1">3. Report</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">Donors receive field dispatch updates and aggregated medical case studies ensuring complete transparency.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.section>
 
         {/* IMPACT TRACKER */}
         <motion.section 
