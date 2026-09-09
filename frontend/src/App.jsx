@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DonationCheckout from './components/DonationCheckout';
 import AIChatSupport from './components/AIChatSupport';
-import heroImage from './assets/hero.png';
+import heroImage from './assets/hero_generated.jpg';
 import logoImage from './assets/logo.jpg';
 
 function App() {
@@ -334,46 +334,6 @@ function App() {
           </div>
         </motion.section>
 
-        {/* MEDICAL CASE STUDY 2: Savitri Devi */}
-        <motion.section 
-          initial={{ opacity: 0, y: 20 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          viewport={{ once: true, margin: "-50px" }} 
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="bg-white border border-slate-200/60 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] space-y-4"
-        >
-          <div className="w-full aspect-[4/3] sm:aspect-[2/1] bg-slate-100 relative overflow-hidden group">
-            <img alt="Savitri Devi receiving walker support" className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" src="/screen.png" />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-dark/60 via-transparent to-transparent"></div>
-            <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm text-brand-navy text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-[16px] text-emerald-600">verified</span>
-              Mobility Regained
-            </div>
-          </div>
-          <div className="p-5 sm:p-7 pt-2">
-            <div className="flex items-center gap-2 text-brand-navy font-bold text-sm mb-3">
-              <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700">
-                <span className="material-symbols-outlined text-[18px]">verified</span>
-              </div>
-              Field Dispatch & Verified Case Study
-            </div>
-            <div className="flex justify-between items-center pb-3 border-b border-slate-100">
-              <h3 className="font-display font-bold text-slate-900 text-lg">Savitri Devi, 78 yrs</h3>
-              <span className="text-[10px] bg-slate-100 text-slate-600 font-bold px-2 py-1 rounded-md border border-slate-200 uppercase tracking-wider">Beneficiary #DL-882</span>
-            </div>
-          <p className="text-sm text-slate-600 leading-relaxed pt-1">
-            "Savitri Ji lived with acute osteoarthritis and chronic bilateral knee stiffness in Mehrauli without family assistance. Through donor support, she received a quad-base ergonomic walker and bi-weekly physiotherapy visits, regaining her ability to walk independently to the local dispensary."
-          </p>
-          <div className="text-[11px] text-slate-500 font-medium flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-[14px]">event</span>
-            Assisted on: December 14, 2024 • Verified by Social Worker Ananya Sen (MSW)
-          </div>
-          <div className="bg-amber-50/50 border-l-4 border-brand-amber p-4 mt-4 text-[13px] text-slate-700 rounded-r-xl">
-            <span className="italic">"Chronic ailments among underprivileged seniors often worsen simply because ₹500 to ₹1,000 monthly medications go unpurchased. Regular doorstep supply stops preventable hospitalization entirely."</span>
-            <span className="block mt-2 font-bold text-brand-navy not-italic">— Dr. K. N. Banerjee, MBBS, MD (Geriatrics)</span>
-          </div>
-          </div>
-        </motion.section>
 
         {/* GROUND OPERATIONS & FINANCIAL ALLOCATION */}
         <motion.section 
