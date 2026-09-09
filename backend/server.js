@@ -238,7 +238,7 @@ app.get('/api/recent-donations', async (req, res) => {
           content: "Generate 10 realistic recent donations. Fields: 'name' (typical Indian name, last initial or full), 'amount' (realistic amounts like 500, 1000, 1500, 2100, 5100), 'location' (Indian city), 'timeAgo' (e.g., '1m ago', '3m ago', '12m ago'). Output JSON format: { \"donations\": [ {\"name\": \"...\", \"amount\": 1500, \"location\": \"...\", \"timeAgo\": \"...\"} ] }"
         }
       ],
-      model: "llama3-8b-8192",
+      model: "llama-3.1-8b-instant",
       temperature: 0.8,
       response_format: { type: "json_object" }
     });
@@ -272,7 +272,7 @@ app.get('/api/urgent-appeal', async (req, res) => {
           content: "Generate an urgent alert. Fields: 'title' (e.g., 'Urgent Batch Dispatch', 'Monsoon Health Alert', 'Winter Frost Warning'), 'count' (a number between 12 and 45), 'message' (a 1-sentence urgent need involving the 'count' of elders and a specific item like mobility walkers, thermal blankets, or medicines). Output JSON: {\"title\": \"...\", \"count\": 32, \"message\": \"...\"}"
         }
       ],
-      model: "llama3-8b-8192",
+      model: "llama-3.1-8b-instant",
       temperature: 0.9,
       response_format: { type: "json_object" }
     });
@@ -313,7 +313,7 @@ app.post('/api/chat-support', chatLimiter, async (req, res) => {
           content: message
         }
       ],
-      model: "llama3-8b-8192",
+      model: "llama-3.1-8b-instant",
       temperature: 0.5,
     });
 
