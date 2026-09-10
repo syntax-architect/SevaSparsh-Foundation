@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const AIChatSupport = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: 'Namaste! 🙏 I am SevaSparsh Support. Do you have any questions about 80G tax exemptions, our field operations, or how your donation is used?' }
+    { role: 'assistant', content: 'Namaste! 🙏 I am SevaSparsh Support. Do you have any questions about our field operations, or how your donation is used?' }
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -112,7 +112,7 @@ const AIChatSupport = () => {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask about 80G, operations..."
+                placeholder="Ask about operations, tracking..."
                 className="flex-1 px-3 py-2 text-sm bg-slate-100 border-none rounded-xl focus:ring-2 focus:ring-brand-navy/20 outline-none"
               />
               <button

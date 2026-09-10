@@ -45,9 +45,15 @@ const TIERS = [
     isPopular: true
   },
   {
+    amount: 2500,
+    title: "Cataract Surgery & Vision Restoration Kit",
+    desc: "Funds a complete cataract removal surgery, premium intraocular lens implant, and post-op care for one elder.",
+    isPopular: false
+  },
+  {
     amount: 3500,
-    title: "Heavy-duty Ergonomic Wheelchair & 30-Day Nutrition",
-    desc: "Provides a heavy-duty wheelchair and a month of high-protein hot meals for a severely disabled elder.",
+    title: "Dementia Care & Cognitive Therapy Month",
+    desc: "Sponsors 30 days of specialized cognitive behavioral therapy, memory clinic visits, and dedicated caregiver support.",
     isPopular: false
   },
   {
@@ -62,7 +68,6 @@ const DonationCheckout = ({ initialAmount = 1500 }) => {
   const isRazorpayLoaded = useRazorpay();
   
   const [amount, setAmount] = useState(initialAmount);
-  const [frequency, setFrequency] = useState('once');
   const [customAmount, setCustomAmount] = useState('');
   
   const [formData, setFormData] = useState({
@@ -111,8 +116,8 @@ const DonationCheckout = ({ initialAmount = 1500 }) => {
       return;
     }
     
-    if (activeAmount < 100) {
-      setUiState(prev => ({ ...prev, paymentError: 'Minimum donation amount is ₹100' }));
+    if (activeAmount < 50) {
+      setUiState(prev => ({ ...prev, paymentError: 'Minimum donation amount is ₹50' }));
       return;
     }
 
@@ -217,7 +222,7 @@ const DonationCheckout = ({ initialAmount = 1500 }) => {
             </motion.div>
             <h3 className="font-display font-extrabold text-3xl sm:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-brand-navy-dark to-brand-navy tracking-tight">Thank You, {formData.name}!</h3>
             <p className="text-slate-600 max-w-md text-base leading-relaxed">
-              Your contribution of <strong className="text-slate-900 font-bold">₹{activeAmount.toLocaleString('en-IN')}</strong> has been securely received. A confirmation receipt has been sent to <strong className="font-bold text-slate-900">{formData.email}</strong>.
+              Your contribution of <strong className="text-slate-900 font-bold">₹{activeAmount.toLocaleString('en-IN')}</strong> has been securely received.
             </p>
           </motion.div>
         ) : (
@@ -240,24 +245,7 @@ const DonationCheckout = ({ initialAmount = 1500 }) => {
               </div>
             </div>
 
-            {/* Frequency Segment */}
-            <div className="grid grid-cols-2 bg-slate-100/80 p-1.5 rounded-2xl border border-slate-200/60 text-sm font-bold shadow-inner">
-              <button 
-                type="button"
-                onClick={() => setFrequency('once')}
-                className={`py-3 px-3 rounded-xl text-center transition-all duration-300 ${frequency === 'once' ? 'bg-white text-brand-navy shadow-sm border border-slate-200/50 scale-[1.02]' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/50'}`}
-              >
-                One-Time
-              </button>
-              <button 
-                type="button"
-                onClick={() => setFrequency('monthly')}
-                className={`py-3 px-3 rounded-xl text-center transition-all duration-300 flex items-center justify-center gap-2 ${frequency === 'monthly' ? 'bg-white text-brand-navy shadow-sm border border-slate-200/50 scale-[1.02]' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/50'}`}
-              >
-                <span>Monthly</span>
-                <span className="bg-gradient-to-r from-brand-amber to-brand-amber-hover text-white text-[10px] px-2.5 py-0.5 rounded-lg font-bold uppercase tracking-wider hidden xs:inline-block shadow-sm">Impactful</span>
-              </button>
-            </div>
+
 
             {/* Impact Tiers */}
             <div className="space-y-4">
@@ -318,11 +306,11 @@ const DonationCheckout = ({ initialAmount = 1500 }) => {
                   }}
                   className="w-full pl-11 pr-5 py-4 bg-slate-50/80 border border-slate-200/80 rounded-2xl font-display font-extrabold text-slate-900 text-xl focus:bg-white focus:border-brand-navy focus:ring-4 focus:ring-brand-navy/10 transition-all outline-none placeholder:text-slate-300 placeholder:font-normal shadow-inner" 
                   placeholder="Other amount (INR)" 
-                  min="100"
-                  step="100"
+                  min="50"
+                  step="50"
                 />
               </div>
-              <span className="text-xs text-slate-400 mt-2.5 block pl-1 font-medium">Minimum donation ₹100.</span>
+              <span className="text-xs text-slate-400 mt-2.5 block pl-1 font-medium">Minimum donation ₹50.</span>
             </div>
 
             {/* Donor Quick Form */}

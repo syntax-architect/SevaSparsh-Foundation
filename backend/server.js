@@ -8,6 +8,12 @@ import Groq from 'groq-sdk';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import { z } from 'zod';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Load environment variables
 dotenv.config();
@@ -88,7 +94,7 @@ const createOrderSchema = z.object({
   email: z.string().email(),
   phone: z.string().regex(/^[0-9]{10}$/, 'Must be a 10-digit phone number'),
   pan_number: z.string().optional(),
-  amount: z.number().int().positive().min(100, 'Minimum donation is ₹100')
+  amount: z.number().int().positive().min(50, 'Minimum donation is ₹50')
 });
 
 /**
@@ -238,12 +244,19 @@ app.get('/api/recent-donations', async (req, res) => {
           content: "Generate 10 realistic recent donations. Fields: 'name' (typical Indian name, last initial or full), 'amount' (realistic amounts like 500, 1000, 1500, 2100, 5100), 'location' (Indian city), 'timeAgo' (e.g., '1m ago', '3m ago', '12m ago'). Output JSON format: { \"donations\": [ {\"name\": \"...\", \"amount\": 1500, \"location\": \"...\", \"timeAgo\": \"...\"} ] }"
         }
       ],
-      model: "llama-3.1-8b-instant",
+      model: "groq/compound",
       temperature: 0.8,
       response_format: { type: "json_object" }
     });
 
-    const data = JSON.parse(chatCompletion.choices[0]?.message?.content || "{\"donations\":[]}");
+    let content = chatCompletion.choices[0]?.message?.content || "{\"donations\":[]}";
+    const jsonMatch = content.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+    if (jsonMatch) {
+      content = jsonMatch[1];
+    } else if (content.indexOf('{') !== -1) {
+      content = content.substring(content.indexOf('{'), content.lastIndexOf('}') + 1);
+    }
+    const data = JSON.parse(content);
     res.status(200).json(data);
   } catch (error) {
     console.error('Error fetching from Groq:', error);
@@ -261,6 +274,10 @@ app.get('/api/recent-donations', async (req, res) => {
  */
 app.get('/api/urgent-appeal', async (req, res) => {
   try {
+    const { raised = 1840000, target = 2500000 } = req.query;
+    const remaining = target - raised;
+    const percent = ((raised / target) * 100).toFixed(1);
+
     const chatCompletion = await groq.chat.completions.create({
       messages: [
         {
@@ -269,15 +286,22 @@ app.get('/api/urgent-appeal', async (req, res) => {
         },
         {
           role: "user",
-          content: "Generate an urgent alert. Fields: 'title' (e.g., 'Urgent Batch Dispatch', 'Monsoon Health Alert', 'Winter Frost Warning'), 'count' (a number between 12 and 45), 'message' (a 1-sentence urgent need involving the 'count' of elders and a specific item like mobility walkers, thermal blankets, or medicines). Output JSON: {\"title\": \"...\", \"count\": 32, \"message\": \"...\"}"
+          content: `Generate an urgent alert. Fields: 'title' (e.g., 'Urgent Batch Dispatch', 'Monsoon Health Alert', 'Winter Frost Warning'), 'count' (a number between 12 and 45), 'message' (a 1-sentence urgent need involving the 'count' of elders and a specific item like mobility walkers, thermal blankets, or medicines). Incorporate the context that we have raised ₹${raised} and need ₹${remaining} more to reach our ₹${target} goal (we are ${percent}% there) to add urgency. Output JSON: {"title": "...", "count": 32, "message": "..."}`
         }
       ],
-      model: "llama-3.1-8b-instant",
+      model: "groq/compound",
       temperature: 0.9,
       response_format: { type: "json_object" }
     });
 
-    const data = JSON.parse(chatCompletion.choices[0]?.message?.content || "{}");
+    let content = chatCompletion.choices[0]?.message?.content || "{}";
+    const jsonMatch = content.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+    if (jsonMatch) {
+      content = jsonMatch[1];
+    } else if (content.indexOf('{') !== -1) {
+      content = content.substring(content.indexOf('{'), content.lastIndexOf('}') + 1);
+    }
+    const data = JSON.parse(content);
     res.status(200).json(data);
   } catch (error) {
     console.error('Error fetching appeal from Groq:', error);
@@ -291,30 +315,47 @@ app.get('/api/urgent-appeal', async (req, res) => {
 
 
 
+
 /**
- * Endpoint to handle AI Chat Support using Groq API
+ * Endpoint to handle AI Chat Support using Groq API (RAG implementation)
  * POST /api/chat-support
  */
-app.post('/api/chat-support', chatLimiter, async (req, res) => {
+app.post('/api/chat-support', async (req, res) => {
   try {
     const { message } = req.body;
     if (!message) {
       return res.status(400).json({ error: 'Message is required' });
     }
 
+    // Read the knowledge base file for Retrieval-Augmented Generation context
+    let knowledgeBase = '';
+    try {
+      knowledgeBase = fs.readFileSync(path.join(__dirname, 'knowledge_base.txt'), 'utf8');
+    } catch (err) {
+      console.warn("Could not read knowledge_base.txt", err);
+    }
+
+    const systemPrompt = `You are the official support assistant for SevaSparsh Foundation, an Indian NGO. 
+Answer questions politely, warmly, and concisely (under 3 sentences). 
+Use the following official NGO knowledge base to accurately answer questions about policies, FAQs, financials, and field data. If the answer is not in the knowledge base, politely say you don't know and direct them to donorrelations@sevasparsh.org.in.
+
+--- KNOWLEDGE BASE START ---
+${knowledgeBase}
+--- KNOWLEDGE BASE END ---`;
+
     const chatCompletion = await groq.chat.completions.create({
       messages: [
         {
           role: "system",
-          content: "You are the support assistant for SevaSparsh Foundation, an Indian NGO. Answer questions politely, warmly, and concisely. Keep answers under 3 sentences. Assure donors that their donations are 100% tax-exempt under 80G and are securely processed. We provide mobility walkers, medicine, and hot meals to abandoned elders in India."
+          content: systemPrompt
         },
         {
           role: "user",
           content: message
         }
       ],
-      model: "llama-3.1-8b-instant",
-      temperature: 0.5,
+      model: "groq/compound",
+      temperature: 0.3,
     });
 
     const reply = chatCompletion.choices[0]?.message?.content || "I'm sorry, I'm having trouble understanding right now. Please email us.";
@@ -325,7 +366,56 @@ app.post('/api/chat-support', chatLimiter, async (req, res) => {
   }
 });
 
-// Start server
-app.listen(port, () => {
-  console.log(`Backend server running on port ${port}`);
+/**
+ * Admin Auth Middleware
+ */
+const adminAuth = (req, res, next) => {
+  const secret = req.headers['x-admin-secret'];
+  if (!secret || secret !== process.env.ADMIN_SECRET) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  next();
+};
+
+/**
+ * Endpoint to fetch donation stats and ledger for Admin Dashboard
+ * GET /api/admin/dashboard
+ */
+app.get('/api/admin/dashboard', adminAuth, async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from('donations')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Supabase fetch error:', error);
+      return res.status(500).json({ error: 'Failed to fetch donations' });
+    }
+
+    const successfulDonations = data.filter(d => d.status === 'successful');
+    const totalRaised = successfulDonations.reduce((sum, d) => sum + parseFloat(d.amount), 0);
+    const totalDonors = successfulDonations.length;
+
+    res.status(200).json({
+      donations: data,
+      stats: {
+        totalRaised,
+        totalDonors,
+        totalTransactions: data.length
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching admin dashboard data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
+
+// Start server
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => {
+    console.log(`Backend server running on port ${port}`);
+  });
+}
+
+export default app;
